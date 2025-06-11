@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Corp.Lib.CertificateAuthentication</Title>
+    <Version>8.0.12</Version>
+    <Company>Sedgwick.Consumer.Claims</Company>
+    <Description>Web Service API Certificate Authentication</Description>
+    <Copyright>Sedgwick 2024</Copyright>
+    <AssemblyVersion>8.0.12</AssemblyVersion>
+    <FileVersion>8.0.12</FileVersion>
+    <Authors>Matthew Hamilton</Authors>
+    <Product>Voyager Application</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Corp.Lib.Logging" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="8.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.5" />
+  </ItemGroup>
+</Project>

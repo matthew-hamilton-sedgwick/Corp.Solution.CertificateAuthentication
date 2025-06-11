@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- Version-8
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: '8.0.x'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/Corp.Lib.CertificateAuthentication.csproj'
+    feedsToUse: 'select'
+    vstsFeed: 'ecaa04d2-3c68-4f64-98c5-5d2738fe4853'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/Corp.Lib.CertificateAuthentication.csproj'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: '**/Corp.Lib.CertificateAuthentication.csproj'
+#     packDirectory: '$(Build.ArtifactStagingDirectory)'
+#     versioningScheme: 'byEnvVar'
+#     versionEnvVar: 'versionnumber'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    packagesToPush: 'D:\a\1\s\Corp.Lib.CertificateAuthentication\bin\Debug\Corp.Lib.CertificateAuthentication.8.0.11.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'ecaa04d2-3c68-4f64-98c5-5d2738fe4853'
